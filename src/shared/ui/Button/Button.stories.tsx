@@ -6,9 +6,10 @@ import { Theme } from 'app/providers/ThemeProvider/index';
 const meta: Meta<typeof Button> = {
   component: Button,
 };
-
 export default meta;
+
 type Story = StoryObj<typeof Button>;
+
 
 export const Primary: Story = {
   args: {
@@ -22,6 +23,13 @@ export const Clear: Story = {
    theme: ThemeButton.CLEAR
   }
 };
+
+export const ClearInverted: Story = {
+  args: {
+    ...Primary.args,
+    theme: ThemeButton.CLEAR_INVERTED
+   }
+}
 
 export const Outline: Story = {
   args: {
