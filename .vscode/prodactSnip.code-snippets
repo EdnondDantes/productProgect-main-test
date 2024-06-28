@@ -68,5 +68,24 @@
 },
 
 
+"Make tests": {
+	"scope": " typescript, typescriptreact",
+	"prefix": "tt",
+	"body": [
+		"",
+		"describe('${TM_FILENAME_BASE}', () => {",
+		"",
+		"   test('', () => {",
+		"      expect($1).toEqual($0);",
+		"   })",
+		"",
+		"});",
+		
+	],
+	"description": "Make tests"
+
+},
+
+
 	
 }
