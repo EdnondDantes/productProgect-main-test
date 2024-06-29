@@ -1,7 +1,6 @@
-
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
-import React from 'react';
 import { Portal } from '../Portal/Portal';
 
 interface ModalProps {
@@ -9,8 +8,8 @@ interface ModalProps {
    children?: React.ReactNode;
    isOpen?: boolean;
    onClose?: () => void
+   lazyLoading?: boolean
 }
-
 
 export const Modal = (props: ModalProps) => {
     
@@ -18,15 +17,38 @@ export const Modal = (props: ModalProps) => {
        className, 
        children, 
        isOpen, 
-       onClose 
+       onClose,
+       lazyLoading,
     } = props;
     
     const ANIMATION_DELAY = 300;
 
-    const [isClosing, setIsClosing] = React.useState(false);
-    const timerRef = React.useRef<NodeJS.Timeout>();
+    const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+    const timerRef = useRef<NodeJS.Timeout>();
 
-    const closeHandler = React.useCallback(() => {
+
+    useEffect(() => {
+      if (isOpen) {
+        window.addEventListener('keydown', onEscapePress);
+      }
+
+      return () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+        window.removeEventListener('keydown', onEscapePress);
+      }
+    }, [isOpen]);
+
+
+    useEffect(() => {
+      if (isOpen) {
+        setIsMounted(true);
+      }
+    }, [isOpen]);
+
+    const closeHandler = useCallback(() => {
       if (onClose) {
         setIsClosing(true);
         timerRef.current = setTimeout(() => {
@@ -40,34 +62,24 @@ export const Modal = (props: ModalProps) => {
       e.stopPropagation();
     }
 
-    const onEscapePress = React.useCallback((e: KeyboardEvent) => {
+    const onEscapePress = useCallback((e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeHandler();
       }
     }, [closeHandler]);
 
-    React.useEffect(() => {
 
-      if (isOpen) {
-        window.addEventListener('keydown', onEscapePress);
-      }
+    if (lazyLoading && !isMounted) {
+      return null;
+    }
 
-      return () => {
-        if (timerRef.current) {
-          clearTimeout(timerRef.current);
-        }
-        window.removeEventListener('keydown', onEscapePress);
-      }
-    }, [isOpen]);
 
     const mods: Record<string, boolean> = {
       [cls.opened]: isOpen,
       [cls.isClosing]: isClosing
     };
-    
 
    return (
-
       <Portal>
          <div className={classNames(cls.Modal, mods, [className])}>
             <div className={cls.overlay} onClick={closeHandler}>
@@ -77,6 +89,5 @@ export const Modal = (props: ModalProps) => {
             </div>
          </div>
       </Portal>
-
    );
 }

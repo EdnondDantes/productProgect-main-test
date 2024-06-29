@@ -86,6 +86,46 @@
 
 },
 
+"Fast translation": {
+	"scope": " typescript, typescriptreact",
+	"prefix": "tra",
+	"body": [
+		"",
+		"\tconst {t} = useTranslation();",
+		"",
+		
+	],
+	"description": "Make translation t"
+
+},
+
+"ACreate new file with props": {
+	"scope": "typescriptreact, typescript",
+	"prefix": "ndp",
+	"body": [
+		"import { classNames } from 'shared/lib/classNames/classNames';",
+		"import React from 'react';",
+		"",
+		"import cls from './${TM_FILENAME_BASE}.module.scss';",
+		"",
+		"interface ${TM_FILENAME_BASE}Props {",
+		"\tclassName?: string;",
+		"\t$1",
+		"}",
+		"",
+		"export const ${TM_FILENAME_BASE} = (props: ${TM_FILENAME_BASE}Props) => {",
+		"\tconst { ",
+		"\t\tclassName,",
+		"\t} = props;",
+		"\treturn (",
+		"\t\t<div className={classNames(cls.${TM_FILENAME_BASE}, {}, [className])}>",
+		"$1",
+		"\t\t</div>",
+		"\t);",
+		"}"
+	],
+	"description": "File with className"
+},
 
 	
 }
