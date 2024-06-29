@@ -12,7 +12,8 @@
     "test": "jest",
     "sb": "storybook dev -p 6006 -c ./config/storybook",
     "build-storybook": "storybook build",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
