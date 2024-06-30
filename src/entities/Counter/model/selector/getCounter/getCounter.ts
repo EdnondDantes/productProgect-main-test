@@ -1,4 +1,4 @@
-import { StateScheme } from "app/providers/StoriesProvider/config/StateScheme";
+import { StateSchema } from "app/providers/StoriesProvider/config/StateSchema";
 
 export const getCounter =
-(state: StateScheme) => state.counter
+(state: StateSchema) => state.counter

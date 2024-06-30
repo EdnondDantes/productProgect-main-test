@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createReduxStore } from '../config/store';
-import { StateScheme } from '../config/StateScheme';
+import { StateSchema } from '../config/StateSchema';
 
 
 interface StoriesProviderProps {
    children?: React.ReactNode;
-   initialState?: StateScheme;
+   initialState?: StateSchema;
 
 }
 
@@ -19,9 +19,11 @@ export const StoriesProvider = (props: StoriesProviderProps) => {
 
    const store = createReduxStore();
 
+   
    return (
       <Provider store={store} >
          {children}
       </Provider>
    );
 }
+

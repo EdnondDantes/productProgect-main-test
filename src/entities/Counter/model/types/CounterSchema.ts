@@ -1,4 +1,4 @@
 
-export interface CounterScheme  {
+export interface CounterSchema  {
    value: number
 }

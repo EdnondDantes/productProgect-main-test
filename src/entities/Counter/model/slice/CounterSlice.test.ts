@@ -1,11 +1,10 @@
-import { StateScheme } from "app/providers/StoriesProvider/config/StateScheme"
 import { counterActions, counterReducer } from "./CounterSlice"
-import { CounterScheme } from "../types/CounterSchema"
+import { CounterSchema } from "../types/CounterSchema"
 
 describe('CounterSlice', () => {
 
    test('counterReducer.increment', () => {
-      const state: CounterScheme = {
+      const state: CounterSchema = {
          value: 10
       }
       expect(counterReducer(state, counterActions.increment())).toEqual({
@@ -14,7 +13,7 @@ describe('CounterSlice', () => {
    })
 
    test('counterReducer.decrement', () => {
-      const state: CounterScheme = {
+      const state: CounterSchema = {
          value: 10
       }
       expect(counterReducer(state, counterActions.decrement())).toEqual({

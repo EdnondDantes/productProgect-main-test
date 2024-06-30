@@ -51,6 +51,7 @@
 		"import { ${TM_DIRECTORY/^.+\\\\(.*)$/$1/} } from './${TM_DIRECTORY/^.+\\\\(.*)$/$1/}';",
 		"",
 		"",
+		"",
 		"const meta: Meta<typeof ${TM_DIRECTORY/^.+\\\\(.*)$/$1/}> = {",
 		"\tcomponent: ${TM_DIRECTORY/^.+\\\\(.*)$/$1/},",
 		"};",
@@ -127,5 +128,30 @@
 	"description": "File with className"
 },
 
+
+	"Create Redux Slice": {
+	  "scope": " typescript, typescriptreact",
+	  "prefix": "slice",
+	  "body": [
+		 "import { createSlice } from '@reduxjs/toolkit'",
+		 "import { ${TM_FILENAME_BASE/(.+)Slice$/${1:/capitalize}/}Schema } from '../types/${TM_FILENAME_BASE/(.+)Slice/$1/}Schema'",
+		 "",
+		 "const initialState: ${TM_FILENAME_BASE/(.+)Slice$/${1:/capitalize}/}Schema = {",
+		 "}",
+		 "",
+		 "export const ${TM_FILENAME_BASE/(.+)Slice/$1/}Slice = createSlice({",
+		 "  name: '${TM_FILENAME_BASE/(.+)Slice/$1/}',",
+		 "  initialState,",
+		 "  reducers: {",
+		 "  },",
+		 "})",
+		 "",
+		 "export const { actions: ${TM_FILENAME_BASE/(.+)Slice/$1/}Actions } = ${TM_FILENAME_BASE/(.+)Slice/$1/}Slice",
+		 "export const { reducer: ${TM_FILENAME_BASE/(.+)Slice/$1/}Reducer } = ${TM_FILENAME_BASE/(.+)Slice/$1/}Slice",
+	  ],
+	  "description": "Create a Redux slice using createSlice from @reduxjs/toolkit"
+	}
 	
 }
+
+
