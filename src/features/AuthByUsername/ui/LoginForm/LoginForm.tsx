@@ -9,17 +9,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '../../model/slice/loginSlice';
 import { getLoginSchema } from '../../model/selector/getLoginSchema/getLoginSchema';
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
+import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
+import { StateSchema } from 'app/providers/StoriesProvider/config/StateSchema';
 
 interface LoginFormProps {
    className?: string;
 }
 
+type loginDispatch = ThunkDispatch<StateSchema, undefined, UnknownAction>
+
 export const LoginForm = memo(({ className }: LoginFormProps) => {
 
    const {t} = useTranslation();
 
-   const dispatch = useDispatch();
-   const { username, password } = useSelector(getLoginSchema);
+   const dispatch = useDispatch<loginDispatch>();
+   const { username, password, isLoading, error } = useSelector(getLoginSchema);
 
 
    const onChangeUsername = useCallback((value: string) => {
@@ -31,11 +35,15 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
    }, [dispatch]);
 
    const onLoadingClick = useCallback(() => {
-      dispatch(loginByUsername({ username, password }) as any);
+      dispatch(loginByUsername({ username, password }));
    }, [dispatch, username, password]);
 
    return (
       <div className={classNames(cls.LoginForm, {}, [className])}>
+
+
+         {error && <div>{error}</div>}
+
          <Input
           type="text"
           className={cls.loginInput}
@@ -55,6 +63,7 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
          <Button
           className={cls.loginBtn}
           onClick={onLoadingClick}
+          disabled={isLoading}
           >
             {t('Войти')}
          </Button>

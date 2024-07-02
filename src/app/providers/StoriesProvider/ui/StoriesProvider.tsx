@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createReduxStore } from '../config/store';
 import { StateSchema } from '../config/StateSchema';
 
 
 interface StoriesProviderProps {
-   children?: React.ReactNode;
+   children?: ReactNode;
    initialState?: StateSchema;
 
 }
