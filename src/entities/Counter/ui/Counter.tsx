@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'shared/ui/Button/Button';
 import { counterActions } from '../model/slice/CounterSlice';
 import { getCounterValue } from '../model/selector/getCounterValue/getCounterValue';
+import { StoriesProvider } from 'app/providers/StoriesProvider';
 
 // import cls from './Counter.module.scss';
 
@@ -30,19 +31,21 @@ export const Counter = ({}: CounterProps) => {
 
    return (
 
-         <div>
-            <h1>value = {value}</h1>
-            <Button
-            onClick={increment}
-            >
-               Increment
-            </Button>
-            <Button
-            onClick={decrement}
-            >
-               Decrement
-            </Button>
-         </div>
+         <StoriesProvider>
+            <div>
+               <h1>value = {value}</h1>
+               <Button
+               onClick={increment}
+               >
+                  Increment
+               </Button>
+               <Button
+               onClick={decrement}
+               >
+                  Decrement
+               </Button>
+            </div>
+         </StoriesProvider>
 
    );
 }

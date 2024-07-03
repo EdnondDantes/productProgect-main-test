@@ -11,6 +11,7 @@ import { getLoginSchema } from '../../model/selector/getLoginSchema/getLoginSche
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoriesProvider/config/StateSchema';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 interface LoginFormProps {
    className?: string;
@@ -39,34 +40,43 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
    }, [dispatch, username, password]);
 
    return (
-      <div className={classNames(cls.LoginForm, {}, [className])}>
 
-
-         {error && <div>{error}</div>}
-
-         <Input
-          type="text"
-          className={cls.loginInput}
-          placeholder={t('Логин')}
-          autofocus
-          onChange={onChangeUsername}
-          value={username}            />
-         <Input
-          type="text"
-          className={cls.loginInput}
-          placeholder={t('Пароль')}
-          onChange={onChangePassword}
-          value={password}
-            />
+         <div className={classNames(cls.LoginForm, {}, [className])}>
+            
+            <Text
+             title={t('Форма входа')}
+             />
+            
+            {error &&
+             <Text
+              title={error}
+              theme={TextTheme.ERROR}
+              />
+              }
+           
+            <Input
+             type="text"
+             className={cls.loginInput}
+             placeholder={t('Логин')}
+             autofocus
+             onChange={onChangeUsername}
+             value={username}            />
+            <Input
+             type="text"
+             className={cls.loginInput}
+             placeholder={t('Пароль')}
+             onChange={onChangePassword}
+             value={password}
+               />
          
+            <Button
+             className={cls.loginBtn}
+             onClick={onLoadingClick}
+             disabled={isLoading}
+             >
+               {t('Войти')}
+            </Button>
+         </div>
 
-         <Button
-          className={cls.loginBtn}
-          onClick={onLoadingClick}
-          disabled={isLoading}
-          >
-            {t('Войти')}
-         </Button>
-      </div>
    );
 })
