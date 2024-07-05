@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import {classNames} from "shared/lib/classNames/classNames";
+import { classNames } from "shared/lib/classNames/classNames";
 import cls from './Navbar.module.scss';
 import { useTranslation } from "react-i18next";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
@@ -11,19 +11,11 @@ interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = ({className}: NavbarProps) => {
-
+export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
-
     const [isAuthModal, setIsAuthModal] = React.useState(false);
-
-    const AuthData = useSelector(getUserAuthData)
-
+    const AuthData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
-
-    // const onToggleModal = React.useCallback(() => {
-    //     setIsAuthModal(prev => !prev);
-    // }, []);
 
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -37,44 +29,35 @@ export const Navbar = ({className}: NavbarProps) => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
-
-    if(AuthData) {
-        return(
+    if (AuthData) {
+        return (
             <div className={classNames(cls.Navbar, {}, [className])}>
                 <Button
-                 theme={ThemeButton.CLEAR_INVERTED}
-                 className={cls.links}
-                 onClick={onOpenModal}
-                 >
+                    theme={ThemeButton.CLEAR_INVERTED}
+                    className={cls.links}
+                    onClick={onClickLogout}
+                >
                     {t('Выйти')}
                 </Button>
             </div>
-        )
-        
-
+        );
     }
 
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
             <Button
-             theme={ThemeButton.CLEAR_INVERTED}
-              className={cls.links}
-              onClick={onOpenModal}
-              >
-                {t('Войти')}
+                theme={ThemeButton.CLEAR_INVERTED}
+                className={cls.links}
+                onClick={onOpenModal}
+            >
+                {t('Войти')}
             </Button>
-            
-            <LoginModal
-             isOpen={isAuthModal}
-             onClose={onCloseModal}    
-             >
-
-            </LoginModal>
-
+            {isAuthModal &&
+                <LoginModal
+                    isOpen={isAuthModal}
+                    onClose={onCloseModal}
+                />
+            }
         </div>
     );
 };
-
-
-
-
