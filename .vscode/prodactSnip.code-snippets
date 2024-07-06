@@ -1,0 +1,157 @@
+{
+	// Place your production_project_code_source-master workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"ACreate new file with className": {
+		"scope": "typescriptreact, typescript",
+		"prefix": "nd",
+		"body": [
+			"import { classNames } from 'shared/lib/classNames/classNames';",
+			"import React from 'react';",
+			"",
+			"import cls from './${TM_FILENAME_BASE}.module.scss';",
+			"",
+			"interface ${TM_FILENAME_BASE}Props {",
+			"\tclassName?: string;",
+			"}",
+			"",
+			"export const ${TM_FILENAME_BASE} = ({ className }: ${TM_FILENAME_BASE}Props) => {",
+			"\treturn (",
+			"\t\t<div className={classNames(cls.${TM_FILENAME_BASE}, {}, [className])}>",
+			"$1",
+			"\t\t</div>",
+			"\t);",
+			"}"
+		],
+		"description": "File with className"
+	},
+
+	"Export from index.ts in directory": {
+		"scope": " typescript",
+		"prefix": "iex",
+		"body": [
+			"",
+			"import { ${TM_DIRECTORY/^.+\\\\(.*)$/$1/} } from './ui/${TM_DIRECTORY/^.+\\\\(.*)$/$1/}';",
+			"",
+			"export { ${TM_DIRECTORY/^.+\\\\(.*)$/$1/} };"
+		],
+		"description": "Export from index.ts in directory"
+	
+},
+
+"Create new stories file ": {
+	"scope": "typescriptreact, typescript",
+	"prefix": "sb",
+	"body": [
+		"import { Meta, StoryObj } from '@storybook/react';",
+		"import { ${TM_DIRECTORY/^.+\\\\(.*)$/$1/} } from './${TM_DIRECTORY/^.+\\\\(.*)$/$1/}';",
+		"",
+		"",
+		"",
+		"const meta: Meta<typeof ${TM_DIRECTORY/^.+\\\\(.*)$/$1/}> = {",
+		"\tcomponent: ${TM_DIRECTORY/^.+\\\\(.*)$/$1/},",
+		"};",
+		"export default meta;",
+		"",
+		"type Story = StoryObj<typeof ${TM_DIRECTORY/^.+\\\\(.*)$/$1/}>;",
+		"",
+		"",
+		"export const Primary: Story = {",
+		"\targs: {",
+		"\t}",
+		"};",
+	],
+	"description": "Storybock"
+},
+
+
+"Make tests": {
+	"scope": " typescript, typescriptreact",
+	"prefix": "tt",
+	"body": [
+		"",
+		"describe('${TM_FILENAME_BASE}', () => {",
+		"",
+		"   test('', () => {",
+		"      expect($1).toEqual($0);",
+		"   })",
+		"",
+		"});",
+		
+	],
+	"description": "Make tests"
+
+},
+
+"Fast translation": {
+	"scope": " typescript, typescriptreact",
+	"prefix": "tra",
+	"body": [
+		"",
+		"\tconst {t} = useTranslation();",
+		"",
+		
+	],
+	"description": "Make translation t"
+
+},
+
+"ACreate new file with props": {
+	"scope": "typescriptreact, typescript",
+	"prefix": "ndp",
+	"body": [
+		"import { classNames } from 'shared/lib/classNames/classNames';",
+		"import React from 'react';",
+		"",
+		"import cls from './${TM_FILENAME_BASE}.module.scss';",
+		"",
+		"interface ${TM_FILENAME_BASE}Props {",
+		"\tclassName?: string;",
+		"\t$1",
+		"}",
+		"",
+		"export const ${TM_FILENAME_BASE} = (props: ${TM_FILENAME_BASE}Props) => {",
+		"\tconst { ",
+		"\t\tclassName,",
+		"\t} = props;",
+		"\treturn (",
+		"\t\t<div className={classNames(cls.${TM_FILENAME_BASE}, {}, [className])}>",
+		"$1",
+		"\t\t</div>",
+		"\t);",
+		"}"
+	],
+	"description": "File with className"
+},
+
+
+	"Create Redux Slice": {
+	  "scope": " typescript, typescriptreact",
+	  "prefix": "slice",
+	  "body": [
+		 "import { createSlice } from '@reduxjs/toolkit'",
+		 "import { ${TM_FILENAME_BASE/(.+)Slice$/${1:/capitalize}/}Schema } from '../types/${TM_FILENAME_BASE/(.+)Slice/$1/}Schema'",
+		 "",
+		 "const initialState: ${TM_FILENAME_BASE/(.+)Slice$/${1:/capitalize}/}Schema = {",
+		 "}",
+		 "",
+		 "export const ${TM_FILENAME_BASE/(.+)Slice/$1/}Slice = createSlice({",
+		 "  name: '${TM_FILENAME_BASE/(.+)Slice/$1/}',",
+		 "  initialState,",
+		 "  reducers: {",
+		 "  },",
+		 "})",
+		 "",
+		 "export const { actions: ${TM_FILENAME_BASE/(.+)Slice/$1/}Actions } = ${TM_FILENAME_BASE/(.+)Slice/$1/}Slice",
+		 "export const { reducer: ${TM_FILENAME_BASE/(.+)Slice/$1/}Reducer } = ${TM_FILENAME_BASE/(.+)Slice/$1/}Slice",
+	  ],
+	  "description": "Create a Redux slice using createSlice from @reduxjs/toolkit"
+	}
+	
+}
+
+

@@ -6,13 +6,17 @@
     font-family: var(--font-family-main);
 }
 
-.clear {
+.clear,
+.clearInverted {
     padding: 0;
     border: none;
     background: none;
     outline: none;
 }
 
+.clearInverted {
+    color: var(--inverted-primary-color);
+}
 
 .outline {
     border: 1px solid var(--primary-color);
@@ -32,12 +36,14 @@
     border: none;
 }
 
+
+
+// Square options
+
 .square {
     border-radius: 0;
     padding: 0;
 }
-
-
 
 .square.size_m {
     width: var(--font-line-m);
@@ -54,6 +60,8 @@
     height: var(--font-line-xl);
 }
 
+// Size
+
 .size_m {
     font-size: var(--font-size-m);
     line-height: var(--font-line-m);
@@ -67,4 +75,11 @@
 .size_xl {
     font-size: var(--font-size-xl);
     line-height: var(--font-line-xl);
+}
+
+// Other options
+
+.disabled {
+    opacity: 0.5;
+    cursor: auto;
 }
