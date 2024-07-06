@@ -15,6 +15,11 @@ export default {
         'json',
         'node',
     ],
+
+    "globals": {
+      "__IS_DEV__": true
+    },
+    
     moduleDirectories: [
         'node_modules',
     ],
@@ -29,9 +34,16 @@ export default {
     setupFilesAfterEnv: ['<rootDir>/config/jest/setupTest.ts'],
 
     moduleNameMapper: {
+        '^entities/(.*)$': '<rootDir>/src/entities/$1',
          '\\.(css|scss)$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
+
+    // exports: {
+    //     moduleNameMapper: {
+    //       '^entities/(.*)$': '<rootDir>/src/entities/$1'
+    //     },
+    // }
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
