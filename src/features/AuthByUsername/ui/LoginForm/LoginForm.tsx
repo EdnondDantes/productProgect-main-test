@@ -88,7 +88,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
                 onClick={onLoadingClick}
                 disabled={isLoading}
                 >
-                  {t('Войти')}
+                  {t('Кнопка Войти')}
                </Button>
             </div>
          </DynamicModuleLoader>

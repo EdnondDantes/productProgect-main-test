@@ -8,12 +8,13 @@
   "Язык": "English",
   "новый перевод": "новый перевод",
   "Короткое название": "En",
-  "Войти": "Sign in",
   "Выйти": "Sign out",
   "Нажать": "press",
   "blabla": "blabla",
   "Логин": "Login",
   "Пароль": "Password",
   "Форма входа": "Sign in form",
-  "Вы ввели невернное имя пользователя или пароль": "You entered an incorrect username or password"
+  "Вы ввели невернное имя пользователя или пароль": "You entered an incorrect username or password",
+  "Войти": "Sign in",
+  "Кнопка Войти" : "Sign in"
 }

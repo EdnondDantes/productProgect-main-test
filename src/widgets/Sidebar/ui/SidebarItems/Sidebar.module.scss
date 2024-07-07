@@ -1,0 +1,36 @@
+
+.SidebarItem {
+   margin-top: 10px;
+   display: flex;
+   align-items: center;
+
+}
+
+
+
+
+.collapsed {
+
+   .icon {
+      transform: translateX(50%);
+      transition: 0.2s transform; ;   
+   }
+
+   .link{
+       opacity: -1;
+       transition: 0.2s opacity;
+      //  width: 0;
+      display: none;
+
+   }
+}
+
+.link {
+   margin-left: 10px;
+   // opacity: 1;
+}
+
+.icon {
+   fill: var(--inverted-primary-color);
+   transition: 0.2s transform;
+}

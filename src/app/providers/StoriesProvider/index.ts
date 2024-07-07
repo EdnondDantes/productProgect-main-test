@@ -1,4 +1,4 @@
 
-import { StoriesProvider } from './ui/StoriesProvider';
+export { StoriesProvider } from './ui/StoriesProvider';
 
-export { StoriesProvider };
+export { AppDispatch } from './config/store'
