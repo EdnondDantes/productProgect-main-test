@@ -3,10 +3,12 @@ import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ReducerManager } from './reducerManager';
+import { ProfileSchema } from 'entities/Profile';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
+    profile: ProfileSchema;
 
     // Асинхронные редьюсеры:
     loginForm?: LoginSchema;

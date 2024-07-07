@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import React from 'react';
+import React, { memo } from 'react';
 
 import cls from './Sidebar.module.scss';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
@@ -14,7 +14,7 @@ interface SidebarItemsProps {
 
 
 
-export const SidebarItems = ({ item, collapsed }: SidebarItemsProps) => {
+export const SidebarItems = memo(({ item, collapsed }: SidebarItemsProps) => {
 
    const { t } = useTranslation();
 
@@ -28,4 +28,4 @@ export const SidebarItems = ({ item, collapsed }: SidebarItemsProps) => {
          </AppLink>
       </div>
    );
-}
+})
