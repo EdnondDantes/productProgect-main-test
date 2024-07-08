@@ -10,14 +10,14 @@ import { ErrorBoundary } from "app/providers/ErrorBoundary";
 import { StoriesProvider } from "app/providers/StoriesProvider";
 
 render(
-        <StoriesProvider>
-            <BrowserRouter>
-                <ErrorBoundary>
-                    <ThemeProvider>
-                        <App />
-                    </ThemeProvider>
-                </ErrorBoundary>
-            </BrowserRouter>
-        </StoriesProvider>,
+        <BrowserRouter>
+            <StoriesProvider>
+                    <ErrorBoundary>
+                        <ThemeProvider>
+                            <App />
+                        </ThemeProvider>
+                    </ErrorBoundary>
+            </StoriesProvider>
+        </BrowserRouter>,
     document.getElementById('root')
 )
